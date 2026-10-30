@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MysteryBox | Case Files</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #101114;
+            color: #f5f0e6;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: #17181d;
+            border-bottom: 1px solid #35312a;
+        }
+
+        .brand {
+            color: #d9b56d;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .brand:hover {
+            color: #f3d59b;
+        }
+
+        .nav-link {
+            color: #c9c5bc;
+        }
+
+        .nav-link:hover {
+            color: #e5bf76;
+        }
+
+        .page-heading {
+            font-family: 'Cinzel', serif;
+            color: #e4c17d;
+            letter-spacing: 2px;
+        }
+
+        .page-subtitle {
+            color: #aaa8a2;
+        }
+
+        .case-card {
+            height: 100%;
+            background: #191a20;
+            border: 1px solid #39352d;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s ease,
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-7px);
+            border-color: #cba65e;
+            box-shadow: 0 12px 30px rgba(203, 166, 94, 0.12);
+        }
+
+        .case-banner {
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at center,
+                #393126 0%,
+                #222126 55%,
+                #17181d 100%);
+            border-bottom: 1px solid #39352d;
+            font-size: 4rem;
+        }
+
+        .case-number {
+            color: #cba65e;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .case-title {
+            color: #f1e6cf;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: 55px;
+        }
+
+        .case-description {
+            color: #b6b4ae;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            min-height: 90px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            background: #302b21;
+            color: #e4c17d;
+        }
+
+        .case-details {
+            color: #aaa8a2;
+            font-size: 0.82rem;
+        }
+
+        .btn-investigate {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cba65e;
+            border-radius: 8px;
+            background: #cba65e;
+            color: #171717;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .btn-investigate:hover {
+            background: #e5c584;
+            border-color: #e5c584;
+            color: #171717;
+        }
+
+        .footer {
+            border-top: 1px solid #35312a;
+            color: #85837e;
+        }
+
+        @media (max-width: 576px) {
+            .page-heading {
+                font-size: 1.8rem;
+            }
+
+            .case-description {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container py-2">
+
+            <a class="navbar-brand brand" href="index.html">
+                MYSTERYBOX
+            </a>
+
+            <button
+                class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cases.html">
+                            Case Files
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container py-5">
+
+        <div class="text-center mb-5">
+            <p class="case-number mb-3">
+                DETECTIVE DIVISION / CLASSIFIED FILES
+            </p>
+
+            <h1 class="page-heading display-5">
+                CHOOSE YOUR CASE
+            </h1>
+
+            <p class="page-subtitle mt-3">
+                Every mystery hides a truth. Every clue brings you closer.
+            </p>
+        </div>
+
+        <!-- CASE CARDS -->
+        <div class="row g-4">
+
+            <!-- CASE 001 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="case-card">
+
+                    <div class="case-banner">🏚️</div>
+
+                    <div class="p-4">
+                        <p class="case-number">CASE #001</p>
+
+                        <h2 class="case-title">
+                            The Midnight Mansion
+                        </h2>
+
+                        <p class="case-description">
+                            A wealthy businessman is found dead in his
+                            locked study. Four suspects have secrets.
+                            One of them is hiding the truth.
+                        </p>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="difficulty">Easy</span>
+
+                            <span class="case-details">
+                                5 clues · 4 suspects
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn-investigate"
+                            onclick="openCase('case001')">
+                            Investigate Case →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- CASE 002 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="case-card">
+
+                    <div class="case-banner">💎</div>
+
+                    <div class="p-4">
+                        <p class="case-number">CASE #002</p>
+
+                        <h2 class="case-title">
+                            The Missing Diamond
+                        </h2>
+
+                        <p class="case-description">
+                            A priceless diamond disappears during a
+                            museum gala. The doors were locked, but
+                            someone found a way inside.
+                        </p>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="difficulty">Easy</span>
+
+                            <span class="case-details">
+                                6 clues · 4 suspects
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn-investigate"
+                            onclick="openCase('case002')">
+                            Investigate Case →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- CASE 003 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="case-card">
+
+                    <div class="case-banner">🚂</div>
+
+                    <div class="p-4">
+                        <p class="case-number">CASE #003</p>
+
+                        <h2 class="case-title">
+                            Murder on the Night Train
+                        </h2>
+
+                        <p class="case-description">
+                            A passenger is found dead during an
+                            overnight journey. Everyone has an alibi,
+                            but not every story adds up.
+                        </p>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="difficulty">Medium</span>
+
+                            <span class="case-details">
+                                6 clues · 4 suspects
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn-investigate"
+                            onclick="openCase('case003')">
+                            Investigate Case →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- CASE 004 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="case-card">
+
+                    <div class="case-banner">🧪</div>
+
+                    <div class="p-4">
+                        <p class="case-number">CASE #004</p>
+
+                        <h2 class="case-title">
+                            The Vanishing Scientist
+                        </h2>
+
+                        <p class="case-description">
+                            A scientist disappears from a secured
+                            laboratory. An unfinished experiment may
+                            hold the answer to the mystery.
+                        </p>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="difficulty">Medium</span>
+
+                            <span class="case-details">
+                                7 clues · 4 suspects
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn-investigate"
+                            onclick="openCase('case004')">
+                            Investigate Case →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- CASE 005 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="case-card">
+
+                    <div class="case-banner">📸</div>
+
+                    <div class="p-4">
+                        <p class="case-number">CASE #005</p>
+
+                        <h2 class="case-title">
+                            The Last Photograph
+                        </h2>
+
+                        <p class="case-description">
+                            A photographer leaves behind one final
+                            image. A hidden detail in the photograph
+                            could expose a carefully planned secret.
+                        </p>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="difficulty">Hard</span>
+
+                            <span class="case-details">
+                                7 clues · 4 suspects
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn-investigate"
+                            onclick="openCase('case005')">
+                            Investigate Case →
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="page-subtitle">
+                🕵️ Five cases. Five mysteries. Can you solve them all?
+            </p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer text-center py-4 mt-4">
+        <small>MYSTERYBOX · EVERY CLUE MATTERS.</small>
+    </footer>
+
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CASE SELECTION LOGIC -->
+    <script>
+        function openCase(caseId) {
+
+            // Remember the selected case for the investigation page
+            sessionStorage.setItem("selectedCase", caseId);
+
+            // Open the investigation page
+            window.location.href = "investigation.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101014">
+
+    <title>MysteryBox | Detective Investigation</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #101114;
+            color: #f5f0e6;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: #17181d;
+            border-bottom: 1px solid #35312a;
+        }
+
+        .brand {
+            color: #d9b56d;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .brand:hover {
+            color: #f3d59b;
+        }
+
+        .brand span {
+            color: #f5f0e6;
+        }
+
+        .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            margin-right: 8px;
+            border: 1px solid #cba65e;
+            border-radius: 8px;
+            color: #e4c17d;
+        }
+
+        .case-tag {
+            color: #aaa8a2;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .case-tag b {
+            color: #e4c17d;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #d5b16b;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(213, 177, 107, 0.6);
+        }
+
+        .landing {
+            position: relative;
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            margin-top: 35px;
+            padding: 55px;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 75% 45%,
+                    rgba(119, 80, 49, 0.22),
+                    transparent 35%
+                ),
+                linear-gradient(135deg, #1a1a20, #111115 70%);
+            border: 1px solid #38332b;
+            border-radius: 16px;
+        }
+
+        .landing-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.14;
+            background-image:
+                linear-gradient(#8f784c 1px, transparent 1px),
+                linear-gradient(90deg, #8f784c 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: linear-gradient(
+                to right,
+                black,
+                transparent 75%
+            );
+            pointer-events: none;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .eyebrow {
+            color: #d5b16b;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .eyebrow span {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            background: #d5b16b;
+            border-radius: 50%;
+        }
+
+        .landing h1 {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4.6rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .landing h1 em {
+            color: #d5b16b;
+            font-style: normal;
+        }
+
+        .landing-copy {
+            color: #b7b4ac;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .btn-crimson {
+            padding: 14px 25px;
+            background: #bd3944;
+            border: 1px solid #d14b55;
+            border-radius: 7px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.25s;
+        }
+
+        .btn-crimson:hover {
+            background: #d14b55;
+            border-color: #e26a72;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-crimson span {
+            margin-left: 12px;
+        }
+
+        .landing-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 35px;
+            color: #888780;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        .case-stamp {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%) rotate(8deg);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px double rgba(213, 177, 107, 0.45);
+            border-radius: 50%;
+            color: rgba(213, 177, 107, 0.65);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .case-stamp strong {
+            font-size: 4rem;
+            line-height: 1.2;
+        }
+
+        .case-stamp small {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+        }
+
+        .intro-section {
+            padding: 55px 0 35px;
+        }
+
+        .section-heading {
+            color: #e4c17d;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+        }
+
+        .intro-text {
+            max-width: 650px;
+            margin: 12px auto 0;
+            color: #aaa8a2;
+            line-height: 1.8;
+        }
+
+        .feature-card {
+            height: 100%;
+            padding: 25px;
+            background: #191a20;
+            border: 1px solid #39352d;
+            border-radius: 12px;
+            transition: 0.25s;
+        }
+
+        .feature-card:hover {
+            border-color: #cba65e;
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            color: #f1e6cf;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            margin-bottom: 0;
+            color: #aaa8a2;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding: 25px 0;
+            border-top: 1px solid #35312a;
+            color: #85837e;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 767px) {
+            .landing {
+                min-height: 520px;
+                margin-top: 20px;
+                padding: 30px 22px;
+            }
+
+            .case-stamp {
+                right: -45px;
+                top: 30px;
+                width: 115px;
+                height: 115px;
+                opacity: 0.35;
+            }
+
+            .case-stamp strong {
+                font-size: 2rem;
+            }
+
+            .landing-content {
+                margin-top: 30px;
+            }
+
+            .landing h1 {
+                font-size: 2.5rem;
+            }
+
+            .landing-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand topbar px-3 px-md-5">
+        <div class="container-fluid">
+
+            <a class="brand" href="index.html">
+                <span class="brand-mark">M</span>
+                MYSTERY<span>BOX</span>
+            </a>
+
+            <div class="ms-auto d-flex align-items-center gap-2 gap-md-3">
+                <span class="case-tag">
+                    CASE FILE <b>001–005</b>
+                </span>
+
+                <span class="status-dot"></span>
+
+                <small class="text-secondary d-none d-sm-inline">
+                    DETECTIVE UNIT
+                </small>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container-xl px-3 px-md-4">
+
+        <!-- LANDING SECTION -->
+        <section id="landing" class="landing">
+
+            <div class="landing-grid"></div>
+
+            <div class="landing-content">
+
+                <div class="eyebrow">
+                    <span></span>
+                    CLASSIFIED DETECTIVE FILES
+                </div>
+
+                <h1>
+                    EVERY CLUE.<br>
+                    <em>HIDES A SECRET.</em>
+                </h1>
+
+                <p class="landing-copy">
+                    Five mysteries. Countless secrets. One detective.<br>
+                    Investigate the evidence, question the suspects,
+                    and uncover the truth.
+                </p>
+
+                <!-- NAVIGATE TO CASE SELECTION -->
+                <button
+                    type="button"
+                    class="btn btn-crimson btn-lg"
+                    id="startBtn"
+                    onclick="window.location.href='cases.html'">
+
+                    EXPLORE CASE FILES
+                    <span>↗</span>
+
+                </button>
+
+                <div class="landing-meta">
+                    <span>◉ FICTIONAL INVESTIGATIONS</span>
+                    <span>⌕ FIVE MYSTERIES</span>
+                    <span>⌁ EASY TO HARD</span>
+                </div>
+
+            </div>
+
+            <div class="case-stamp">
+                CASE
+                <strong>005</strong>
+                <small>CLASSIFIED</small>
+            </div>
+
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="intro-section text-center">
+
+            <div class="eyebrow">
+                YOUR INVESTIGATION STARTS HERE
+            </div>
+
+            <h2 class="section-heading mt-3">
+                THINK LIKE A DETECTIVE
+            </h2>
+
+            <p class="intro-text">
+                Every suspect has a story. Every clue has a purpose.
+                Examine the evidence, connect the details, and solve
+                mysteries that become more challenging with each case.
+            </p>
+
+        </section>
+
+        <!-- FEATURE CARDS -->
+        <section class="row g-4 pb-4">
+
+            <div class="col-md-4">
+                <article class="feature-card">
+                    <div class="feature-icon">🔎</div>
+
+                    <h3>Examine Evidence</h3>
+
+                    <p>
+                        Search for hidden details and uncover clues
+                        that reveal what really happened.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="feature-card">
+                    <div class="feature-icon">🕵️</div>
+
+                    <h3>Question Suspects</h3>
+
+                    <p>
+                        Compare stories, investigate motives, and
+                        find contradictions in suspect statements.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="feature-card">
+                    <div class="feature-icon">🏆</div>
+
+                    <h3>Earn Your Rank</h3>
+
+                    <p>
+                        Solve cases, earn points, and work your way
+                        toward becoming a Master Detective.
+                    </p>
+                </article>
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <span>© MYSTERYBOX DETECTIVE UNIT</span>
+            <span>OBSERVE · CONNECT · DEDUCE</span>
+        </footer>
+
+    </main>
+
+</body>
+</html>
